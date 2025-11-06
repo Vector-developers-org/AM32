@@ -2330,6 +2330,31 @@
 #define SIXTY_FOUR_KB_MEMORY
 #endif
 
+#ifdef  ST_G0_05_G071
+#define FILE_NAME "ST_G0_05_G071"
+#define FIRMWARE_NAME "ST_G0_05"
+#define DEAD_TIME 45
+#define MILLIVOLT_PER_AMP 10
+#define CURRENT_OFFSET 0
+#define HARDWARE_GROUP_G0_K
+#define USE_SERIAL_TELEMETRY
+#define SIXTY_FOUR_KB_MEMORY
+#endif
+
+#ifdef VECTOR_4IN1_G071
+#define FILE_NAME "VECTOR_4IN1_G071"
+#define FIRMWARE_NAME "VECTOR 4IN1"
+#define DEAD_TIME 60
+#define MILLIVOLT_PER_AMP 15
+#define CURRENT_OFFSET 0
+#define HARDWARE_GROUP_G0_A
+#define USE_SERIAL_TELEMETRY
+#define SIXTY_FOUR_KB_MEMORY
+#define TARGET_VOLTAGE_DIVIDER 150 // 15x voltage divider
+#define VOLTAGE_ADC_CHANNEL LL_ADC_CHANNEL_6
+#define VOLTAGE_ADC_PIN LL_GPIO_PIN_6
+#endif
+
 /********************************** F031 Targets
  * ***********************************/
 

@@ -22,4 +22,6 @@ void Configure_ADC();
 
 void Activate_ADC();
 
+int16_t adc_ntc_convert(uint16_t adc_value);
+
 #endif /* ADC_H_ */

@@ -2371,6 +2371,9 @@
 #define TARGET_VOLTAGE_DIVIDER 150 // 15x voltage divider
 #define VOLTAGE_ADC_CHANNEL LL_ADC_CHANNEL_6
 #define VOLTAGE_ADC_PIN LL_GPIO_PIN_6
+#define USE_NTC
+#define TEMP_ADC_PIN LL_GPIO_PIN_4 // NTC on PA4
+#define TEMP_ADC_CHANNEL LL_ADC_CHANNEL_4
 #endif
 
 /********************************** F031 Targets

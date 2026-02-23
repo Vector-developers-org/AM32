@@ -170,3 +170,39 @@ void ADC_Init(void)
     LL_ADC_DisableIT_EOC(ADC1);
     LL_ADC_DisableIT_EOS(ADC1);
 }
+
+
+// Lookup table for temperature conversion for a 10k  B 25/85 NTC paired with 10k resistor
+static const int16_t lookup[32] = {
+    20000, 15159, 11660, 9810, 8558, 7612, 6847, 6202,
+    5642, 5142, 4689, 4272, 3882, 3514, 3164, 2826,
+    2499, 2178, 1862, 1548, 1233, 914,  588,  253,
+    -98,  -469, -869, -1310, -1812, -2410, -3181, -4358
+};
+
+// lookup table + interpolation implementation
+static int16_t getTemperature_centiDegC(uint16_t adcCode)
+{
+    // scale 0–4095 range to 0–31 index
+    uint8_t index = adcCode >> 7;  // 4096 / 32 = 128
+
+    if (index >= 31) {
+        return lookup[31];
+    }
+
+    // rem = adcCode % 128
+    uint16_t rem = adcCode & 0x007F;  // 127 mask
+
+    int32_t a = lookup[index];
+    int32_t b = lookup[index + 1];
+
+    // Weighted average: (rem/128)*b + ((128-rem)/128)*a
+    // All scaled by 128 to avoid floating point:
+    int32_t num = (int32_t)(rem) * b + (int32_t)(128 - rem) * a + 64;  // rounding
+
+    return (int16_t)(num >> 7);  // divide by 128
+}
+
+int16_t adc_ntc_convert(uint16_t adc_value) {
+    return getTemperature_centiDegC(adc_value)/100;
+}

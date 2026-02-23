@@ -2376,6 +2376,27 @@
 #define TEMP_ADC_CHANNEL LL_ADC_CHANNEL_4
 #endif
 
+#ifdef VECTOR_4IN1_F051
+#define FILE_NAME "VECTOR_4IN1_F051"
+#define FIRMWARE_NAME "VECTOR F051"
+#define DEAD_TIME 60
+#define MILLIVOLT_PER_AMP 30
+#define CURRENT_OFFSET 0
+#define HARDWARE_GROUP_F0_B
+#define USE_SERIAL_TELEMETRY
+#define SIXTY_FOUR_KB_MEMORY
+#define TARGET_VOLTAGE_DIVIDER 150 // 15x voltage divider
+// different adc mapping than default MCU_F051 def
+#define VOLTAGE_ADC_CHANNEL LL_ADC_CHANNEL_6
+#define VOLTAGE_ADC_PIN LL_GPIO_PIN_6
+#define CURRENT_ADC_PIN LL_GPIO_PIN_3
+#define CURRENT_ADC_CHANNEL LL_ADC_CHANNEL_3
+// use external NTC to monitor temperature
+#define USE_NTC
+#define TEMP_ADC_PIN LL_GPIO_PIN_2 // NTC on PA2
+#define TEMP_ADC_CHANNEL LL_ADC_CHANNEL_2
+#endif
+
 /********************************** F031 Targets
  * ***********************************/
 

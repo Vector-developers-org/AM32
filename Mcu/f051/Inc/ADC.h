@@ -16,4 +16,6 @@ void enableADC_DMA();
 void activateADC();
 void ADC_Init(void);
 
+int16_t adc_ntc_convert(uint16_t adc_value);
+
 #endif /* ADC_H_ */
